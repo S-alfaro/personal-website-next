@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Footer from '../assets/components/Footer/Footer'
+import ArticleCase from '../assets/components/Home/ArticlesCase'
 import NavBar from '../assets/components/NavBar/NavBar'
 import HeroHome from '../components/Home/HeroHome'
 
@@ -15,14 +17,14 @@ export default function Home() {
         <main >
           <NavBar />
           <HeroHome />
+          <ArticleCase />
+          <Footer />
         </main>
       </div>
       <style jsx>
       {`
         main{
-          with: 100vw;
-          min-height: 100vh;
-          background-color: white;
+          position: relative;
         }
       `}
       </style>
