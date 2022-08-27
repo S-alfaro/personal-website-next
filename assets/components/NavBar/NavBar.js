@@ -1,8 +1,31 @@
+import { useEffect, useState } from "react"
 
 function NavBar() {
+
+  const [change, setChange] = useState(false)
+  const cssClass = change ? ' active' : ''
+
+  const onChangeScroll = ()=>{
+    
+    console.log(window.scrollY);
+    if(window.scrollY > 450){
+      setChange(true)
+    } else(
+      setChange(false)
+    )
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', onChangeScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onChangeScroll);
+    };
+  }, [window.scrollY]);
+
   return (
     <>
-      <nav>
+      <header className={"headerBox" + cssClass}>
 
         <div className="contentBox">
           <div className="logoBox">
@@ -30,10 +53,10 @@ function NavBar() {
           </div>
 
         </div>
-      </nav>
+      </header>
       <style jsx>{`
-        nav{
-          position: absolute;
+        .headerBox {
+          position: fixed;
           display: flex;
           flex-direction: row;
           justify-content: center;
@@ -45,6 +68,12 @@ function NavBar() {
           background-color: transparent;
           z-index: 10;
           color: white;
+          transition: 0.6s;
+        }
+
+        .active {
+          background-color: #ffffffb5;
+          color: black;
         }
 
         .contentBox {
